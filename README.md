@@ -8,6 +8,11 @@
 - [X] Try uploading any file.
 
 
+## Project Specif Links
+Manual Test Case Sheet [Link](https://docs.google.com/spreadsheets/d/1lWt0Ccr4pc7EkbUR4Y5YqOOzmEutJOGA9wE9ILrLa5I/edit#gid=0) 
+
+Project [Link](https://github.com/vicky-ops/hack2skill-assignment/)
+
 ## Concepts Included
 - [X] Common web page interaction methods
 
@@ -54,7 +59,7 @@ describe('Testing If Image is broken!',()=>{
     })
 })
 ```
-2. Access http://the-internet.herokuapp.com/uploadandtryuploading any file
+2. Access http://the-internet.herokuapp.com/upload and try uploading any file
 
 Test Steps:-
 ```
@@ -92,3 +97,28 @@ describe('File Upload Test Suite', () => {
     });
   });
   ```
+
+## Test Summary Report
+
+| **Platform and Browser**     | **Product Name**          |
+|-----------------------------|---------------------------|
+| Ubuntu 22.04                | The INTERNET HEROKU APP   |
+| Chrome 115.0.5790.98        |                           |
+
+| **Product Links**                              |
+|-----------------------------------------------|
+| [Broken Images](http://the-internet.herokuapp.com/broken_images) |
+| [Upload](http://the-internet.herokuapp.com/upload)               |
+
+| **Project Description**                       |
+|-----------------------------------------------|
+| The Internet Herokuapp is a website specifically made for common website testing scenarios. For this assignment, we tested the broken image and upload modules of the website. |
+
+| **Author**     | **Total Test Cases** | **Project Duration**                             |
+|----------------|----------------------|-------------------------------------------------|
+| Vicky Das      | 2                    | Start Date: 18th July 2023 End Date: 19th July 2023 |
+
+| **Test Case Status** |
+|----------------------|
+| Passed: 2            |
+| Failed: 0            |
