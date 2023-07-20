@@ -82,7 +82,7 @@ Status: Pass
 ```javascript
 describe('File Upload Test Suite', () => {
     it('Uploads a text file', () => {
-      cy.visit('https://example.com/txt-upload-page');
+      cy.visit('http://the-internet.herokuapp.com/upload');
   
       cy.fixture('sample-text-file.txt').then((fileContent) => {
         cy.get('#txt-upload-btn').click();
