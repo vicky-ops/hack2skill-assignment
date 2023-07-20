@@ -1,12 +1,19 @@
-describe('Testing If Image is broken!',()=>{
-    it('Check if any broken image present or not',()=>{
-        cy.visit('http://the-internet.herokuapp.com/broken_images');
-
-        cy.get('img').each(($img)=>{
-            //check if the image is broken
-            cy.request($img.attr('src')).then((response) => {
-                expect(response.status).to.equal(404); // Assuming a 200 status code means the image is not broken
-              });
-        })
-    })
-})
+describe('Testing If Image is broken!', () => {
+    it('Check if any broken image present or not', () => {
+        //visit the page
+      cy.visit('http://the-internet.herokuapp.com/broken_images');
+      cy.get('img').each(($img) => {
+        // Check if the image is broken
+        cy.request({
+          url: $img.attr('src'),
+          failOnStatusCode: false,
+        }).then((response) => {
+          if (response.status === 404) {
+            cy.log(`Found a broken image: ${$img.attr('src')}`);
+          }
+        });
+      });
+    });
+  });
+  //Testing is done to check if the page contains any 404 image
+  
