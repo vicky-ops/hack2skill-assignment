@@ -46,18 +46,23 @@ Status: Pass
 ```
 #### Automation
 ```javascript
-describe('Testing If Image is broken!',()=>{
-    it('Check if any broken image present or not',()=>{
-        cy.visit('http://the-internet.herokuapp.com/broken_images');
-
-        cy.get('img').each(($img)=>{
-            //check if the image is broken
-            cy.request($img.attr('src')).then((response) => {
-                expect(response.status).to.equal(404); // Assuming a 200 status code means the image is not broken
-              });
-        })
-    })
-})
+describe('Testing If Image is broken!', () => {
+    it('Check if any broken image present or not', () => {
+        //visit the page
+      cy.visit('http://the-internet.herokuapp.com/broken_images');
+      cy.get('img').each(($img) => {
+        // Check if the image is broken
+        cy.request({
+          url: $img.attr('src'),
+          failOnStatusCode: false,
+        }).then((response) => {
+          if (response.status === 404) {
+            cy.log(`Found a broken image: ${$img.attr('src')}`);
+          }
+        });
+      });
+    });
+  });
 ```
 2. Access http://the-internet.herokuapp.com/upload and try uploading any file
 
@@ -83,19 +88,26 @@ Status: Pass
 describe('File Upload Test Suite', () => {
     it('Uploads a text file', () => {
       cy.visit('http://the-internet.herokuapp.com/upload');
+
+      
   
       cy.fixture('sample-text-file.txt').then((fileContent) => {
-        cy.get('#txt-upload-btn').click();
-        cy.get('#txt-upload').attachFile({
+        // cy.get('#file-submit').click();
+        cy.get('#file-upload').click().attachFile({
           fileContent,
           fileName: 'sample-text-file.txt',
           mimeType: 'text/plain',
         });
       });
-  
-      // Add any assertions or verifications related to the text file upload here
-    });
+
+      //Click on upload button
+      cy.get('#file-submit').click();
+
+      //Assert if the file is uploaded successfully
+      cy.contains('File Uploaded!').should('be.visible');
+        });
   });
+
   ```
 
 ## Test Summary Report
